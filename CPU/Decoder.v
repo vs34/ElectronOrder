@@ -1,4 +1,4 @@
-module decoder (
+module Decoder (
     input wire [31:0] instruction,  // 32-bit instruction
     output reg [6:0] opcode,        // Opcode field
     output reg [4:0] rd,            // Destination register

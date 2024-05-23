@@ -3,6 +3,36 @@ This is a hard project for me with my current plans for this project,
 that way i am creating you to put my thoughts here
 
 lets start
+### BASICS
+in riscv isa we have a same opcode for diffrent instruction for eg add and sub
+infact the opcode difine the type of instruction like opcode for typeR is 0110011
+so add and sub both have same opcode as they are of same type typeR 
+they are ditenguish by the funct7 funct3 bits of the instruction 
+
+#### R-Type Instruction Format
+R-type instructions in the RV32I ISA use the following format:
+```
+| funct7 | rs2  | rs1  | funct3 | rd   | opcode  |
+| 7 bits | 5 bits | 5 bits | 3 bits | 5 bits | 7 bits  |
+```
+
+#### Common Opcode
+The common primary opcode for these arithmetic and logical operations is `0110011`.
+
+#### Differentiating with `funct3` and `funct7`
+
+##### ADD and SUB
+- **Opcode**: `0110011`
+- **funct3**: `000`
+- The difference between `ADD` and `SUB` is in the `funct7` field.
+
+  - `ADD`:
+    - `funct7`: `0000000`
+    - Instruction Encoding: `0000000 rs2 rs1 000 rd 0110011`
+  - `SUB`:
+    - `funct7`: `0100000`
+    - Instruction Encoding: `0100000 rs2 rs1 000 rd 0110011`
+
 ### CPU/Fetcher
 wrote **Instruction Fetch Unit (IFU)** ez read from a file
 * _ASSUMPTION_ the fetch unit will fetch the instruction after every clock cycle
@@ -11,7 +41,9 @@ wrote **Instruction Fetch Unit (IFU)** ez read from a file
 
 ### CPU/Decoder
  **Instruction Decode Unit (IDU)** moderate requare reading (RISCV ISA)
-
+* _NO Clk signal_ not that complex decoder dosent need many clock cuycle to decode the instruction 
+immedate risponce no clk when pipleined the decoder is connected to the reg 
+which provide the clk signal would be sequential
 
 
 
@@ -21,4 +53,6 @@ wrote **Instruction Fetch Unit (IFU)** ez read from a file
 ```
 2024-05-22 01:01
 2024-05-22 02:21
+2024-05-24 01:15
+2024-05-24 02:33
 ```
