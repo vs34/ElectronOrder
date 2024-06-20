@@ -63,8 +63,8 @@ The common primary opcode for these arithmetic and logical operations is `011001
 
 Immediate type. Immediate is a constant value that:
 
-- We could load to a constant to register **LOAD UNIT**
 - Add/subtract a constant from a given register **ALU UNIT**
+- We could load to a constant to register **LOAD UNIT**
 - Increase program counter a constant value by any constant value **BRANCH UNIT**
 
 Hence, type I contains 3 types of instructions if we classify according to **Execution Units** that an instruction belongs to. Therefore, type I instructions have 3 different opcodes:
@@ -88,6 +88,7 @@ Hence, type I contains 3 types of instructions if we classify according to **Exe
 ### TYPE B
 
 Branch instructions. Used for conditional branching based on comparisons between registers.
+branch instructions only have immediate value
 
 #### Instruction Set Encoding:
 
@@ -133,6 +134,7 @@ Used for instructions that require a large immediate value, such as loading an u
 ### TYPE S
 
 Store instructions. Used to store register values into memory.
+altho store instructions have immediate value but it is assind deffrent opcode because this will save silicon
 
 #### Instruction Set Encoding:
 

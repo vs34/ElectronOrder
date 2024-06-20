@@ -34,10 +34,10 @@ module Decoder (
         // Decode based on opcode
         case (opcode)
             7'b0110011: begin // R-type
-                is_alu_op = 1;
+                is_alu_op = 1; // BACKBONE DONE
             end
             7'b0010011: begin // I-type (Immediate ALU operations)
-                is_alu_op = 1;
+                is_alu_op = 1; // BACKBONE DONE
                 imm = {{20{instruction[31]}}, instruction[31:20]}; // Sign-extended immediate
             end
             7'b0000011: begin // I-type (Load)
@@ -49,7 +49,7 @@ module Decoder (
                 imm = {{20{instruction[31]}}, instruction[31:25], instruction[11:7]}; // Sign-extended immediate
             end
             7'b1100011: begin // B-type (Branch)
-                is_branch = 1;
+                is_branch = 1; // BACKBONE DONE
                 imm = {{20{instruction[31]}}, instruction[7], instruction[30:25], instruction[11:8], 1'b0}; // Sign-extended immediate
             end
             7'b0110111, // U-type (LUI)
