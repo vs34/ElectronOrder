@@ -10,7 +10,8 @@ module Decoder (
     output reg is_branch,           // Branch flag
     output reg is_load,             // Load flag
     output reg is_store,            // Store flag
-    output reg is_alu_op            // ALU operation flag
+    output reg is_alu_op,           // ALU operation flag
+    output reg type                 // is the given instruction is R or I for alu
 );
 
     always @(*) begin
@@ -21,6 +22,7 @@ module Decoder (
         rs1    = instruction[19:15];
         rs2    = instruction[24:20];
         funct7 = instruction[31:25];
+        type   = instruction[7];
 
         // Default values
         imm = 32'b0;
