@@ -29,6 +29,8 @@ wrote **Instruction Fetch Unit (IFU)** ez read from a file
 - _NO Clk signal_ not that complex decoder dosent need many clock cuycle to decode the instruction
   immedate risponce no clk when pipleined the decoder is connected to the reg
   which provide the clk signal would be sequential
+- the read of reg value is combinational
+<!-- - this Decoder dosent load the reg value form the 32 unique registor of rv36i hence it is combination logic -->
 
 ## CPU/ALU
 
