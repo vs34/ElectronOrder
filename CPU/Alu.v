@@ -16,7 +16,7 @@ module Alu (
 
                001'b0: begin // type 
 
-                end
+               end
 
                010'b0: begin // type 
 

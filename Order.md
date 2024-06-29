@@ -2,8 +2,8 @@
 
 #### Overview
 
-The ElectronOrder SoC is a comprehensive project to design a 
-System-on-Chip (SoC) inspired by the Apple M1. 
+The ElectronOrder SoC is a comprehensive project to design a
+System-on-Chip (SoC) inspired by the Apple M1.
 This SoC integrates a core CPU based on the RISC-V architecture with multiple
 components, mimicking the functionality of a modern, high-performance SoC.
 
@@ -15,38 +15,43 @@ components, mimicking the functionality of a modern, high-performance SoC.
 
 ### 1. Core CPU Design
 
-The CPU design will be based on the RISC-V RV32I (32-bit Integer) 
+The CPU design will be based on the RISC-V RV32I (32-bit Integer)
 Instruction Set Architecture (ISA).
 
 #### CPU Components
 
 1. **Instruction Fetch Unit (IFU)**
+
    - Fetches instructions from memory.
    - Handles program counter (PC) management and branch prediction.
 
 2. **Instruction Decode Unit (IDU)**
+
    - Decodes the fetched instructions.
    - Determines the operation and operands.
    - Sends control signals to other parts of the CPU.
 
-3. **Execution Units**
+3. **Register File**
+
+   - Set of registers for quick data storage and retrieval.
+   - Typically consists of 32 registers for RV32I.
+
+4. **Execution Units**
+
    - **ALU (Arithmetic Logic Unit)**: Performs arithmetic and logical operations.
    - **Branch Unit**: Handles branch instructions.
    - **Load/Store Unit**: Manages memory access instructions.
 
-4. **Register File**
-   - Set of registers for quick data storage and retrieval.
-   - Typically consists of 32 registers for RV32I.
-
 5. **Control Logic**
+
    - Manages the operation of the CPU based on decoded instructions.
    - Generates control signals for other components.
 
 6. **Pipeline Stages**
    - **Fetch**: Retrieves the instruction from memory.
    - **Decode**: Decodes the instruction and reads registers.
-   - **Execute**: Executes the instruction (ALU operations, branches).
    - **Memory Access**: Reads/Writes data from/to memory.
+   - **Execute**: Executes the instruction (ALU operations, branches).
    - **Write Back**: Writes the result back to the register file.
 
 ### 2. Integration of Various Components
@@ -54,22 +59,27 @@ Instruction Set Architecture (ISA).
 To create an SoC similar to the Apple M1, additional components need to be integrated:
 
 1. **Memory (RAM and ROM)**
+
    - RAM: For dynamic data storage.
    - ROM: For bootloader and firmware.
 
 2. **I/O Controllers**
+
    - Handles input and output operations.
    - Interfaces like UART, GPIO, SPI, I2C.
 
 3. **Cache Memory**
+
    - L1 Cache: Small, fast memory for frequently accessed data.
    - L2 Cache: Larger than L1, stores less frequently accessed data.
 
 4. **GPU (Optional)**
+
    - For handling graphics operations.
    - Can be a simple co-processor for initial implementation.
 
 5. **Security Modules**
+
    - Encryption and decryption units.
    - Secure boot and storage.
 
@@ -81,9 +91,11 @@ To create an SoC similar to the Apple M1, additional components need to be integ
 #### Design and Simulation
 
 1. **Hardware Description Language (HDL)**
+
    - Use Verilog or VHDL for designing the CPU and other components.
 
 2. **FPGA Prototyping**
+
    - Implement the SoC on an FPGA for testing and validation.
    - Use development boards like Xilinx or Altera.
 
@@ -94,6 +106,7 @@ To create an SoC similar to the Apple M1, additional components need to be integ
 #### Development Tools
 
 1. **Design Tools**
+
    - **Xilinx Vivado** or **Intel Quartus** for FPGA design and implementation.
    - **ModelSim** or **GHDL** for simulation and verification.
 
@@ -107,27 +120,33 @@ To create an SoC similar to the Apple M1, additional components need to be integ
 #### Step 1: Core CPU Design
 
 1. **Define the RISC-V RV32I ISA**
+
    - Study and document the RV32I instruction set.
    - Define the instruction formats and encoding.
 
 2. **Design the CPU Pipeline**
+
    - Create a pipeline diagram with Fetch, Decode, Execute, Memory Access,
-   and Write Back stages.
+     and Write Back stages.
 
 3. **Implement the Instruction Fetch Unit (IFU)**
+
    - Write Verilog/VHDL code to fetch instructions from memory.
    - Implement the program counter (PC) and branch prediction logic.
 
 4. **Implement the Instruction Decode Unit (IDU)**
+
    - Write code to decode instructions and generate control signals.
    - Implement register file read operations.
 
 5. **Implement Execution Units**
+
    - **ALU**: Design and implement the arithmetic and logic operations.
    - **Branch Unit**: Implement branch operations and prediction.
    - **Load/Store Unit**: Manage memory access instructions.
 
 6. **Implement Control Logic**
+
    - Write code for generating control signals based on decoded instructions.
    - Ensure proper coordination between pipeline stages.
 
@@ -138,18 +157,22 @@ To create an SoC similar to the Apple M1, additional components need to be integ
 #### Step 2: SoC Component Integration
 
 1. **Integrate Memory Components**
+
    - Design and connect RAM and ROM to the CPU.
    - Implement memory interface logic.
 
 2. **Develop I/O Controllers**
+
    - Design UART, GPIO, SPI, and I2C controllers.
    - Integrate these controllers with the CPU.
 
 3. **Implement Cache Memory**
+
    - Design L1 and L2 cache memory.
    - Integrate cache logic with the CPU.
 
 4. **Optional: Design and Integrate GPU**
+
    - Implement basic GPU functionality for graphics operations.
    - Integrate GPU with the main CPU.
 
@@ -160,10 +183,12 @@ To create an SoC similar to the Apple M1, additional components need to be integ
 #### Step 3: Verification and Prototyping
 
 1. **Simulate and Verify Each Component**
+
    - Use ModelSim or GHDL for simulation.
    - Verify functionality of individual components and the integrated system.
 
 2. **FPGA Implementation**
+
    - Synthesize and implement the SoC design on an FPGA.
    - Use Xilinx Vivado or Intel Quartus for FPGA development.
 
@@ -173,17 +198,20 @@ To create an SoC similar to the Apple M1, additional components need to be integ
 
 #### Resources and Tools
 
-- **Books**: 
+- **Books**:
+
   - "Digital Design and Computer Architecture" by David Harris and Sarah Harris.
   - "Computer Organization and Design RISC-V Edition" by David Patterson and John Hennessy.
 
-- **HDL Tools**: 
+- **HDL Tools**:
+
   - Xilinx Vivado
   - Intel Quartus
   - ModelSim
   - GHDL
 
 - **RISC-V Tools**:
+
   - RISC-V GNU Toolchain
   - QEMU
   - GDB

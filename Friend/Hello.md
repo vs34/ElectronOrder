@@ -42,14 +42,16 @@ wrote **Instruction Fetch Unit (IFU)** ez read from a file
 i could just impliment one common stroage for internal and ram it would reduse complexcity
 i want to simulate a little kernel on top of it so
 according to gpt
-Running a kernel, even a minimal one, typically requires more resources than running a basic application due to the kernel's need to manage hardware, provide system services, and maintain various data structures. Let's look at what is minimally required to run a simple kernel on an RV32I CPU.
+Running a kernel, even a minimal one, typically requires more resources than running a basic application due to the kernel's need to manage hardware,
+provide system services, and maintain various data structures. Let's look at what is minimally required to run a simple kernel on an RV32I CPU.
 
 ### Basic Requirements for Running a Kernel
 
 1. **Instruction Storage**:
 
    - The kernel itself needs to be stored in RAM.
-   - A minimal kernel that includes basic functionalities (such as task switching, simple file system support, basic device drivers) would require more memory than a simple bootloader.
+   - A minimal kernel that includes basic functionalities (such as task switching, simple file system support, basic device drivers) would require
+     more memory than a simple bootloader.
 
 2. **Data Storage**:
 
