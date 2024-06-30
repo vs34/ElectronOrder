@@ -3,8 +3,8 @@ module Decoder (
     output reg [6:0] opcode,        // Opcode field
     output reg [4:0] rd,            // Destination register
     output reg [2:0] funct3,        // funct3 field
-    output reg [4:0] rs1,           // Source register 1
-    output reg [4:0] rs2,           // Source register 2
+    output reg [31:0] rs1,           // Source register 1
+    output reg [31:0] rs2,           // Source register 2
     output reg [6:0] funct7,        // funct7 field
     output reg [31:0] imm,          // Immediate value
     output reg is_branch,           // Branch flag
@@ -16,13 +16,25 @@ module Decoder (
 
     always @(*) begin
         // Extract common fields
-        opcode = instruction[6:0];
-        rd     = instruction[11:7];
-        funct3 = instruction[14:12];
-        rs1    = instruction[19:15];
-        rs2    = instruction[24:20];
-        funct7 = instruction[31:25];
-        type   = instruction[7];
+        opcode  = instruction[6:0];
+        rd      = instruction[11:7];
+        funct3  = instruction[14:12];
+        rs1_add = instruction[19:15];
+        rs2_add = instruction[24:20];
+        funct7  = instruction[31:25];
+        type    = instruction[7];
+
+        Registers GetVelue_rs (    
+            .clk(1'b0),             // Clock signal
+            .reset(1'b0),           // Reset signal
+            .we(1'b0),              // Write enable
+            .ra1(rs1_add),          // Read address 1
+            .ra2(rs2_add),          // Read address 2
+            .wa,                    // Write address
+            .wd,                    // Write data
+            .rd1(rs1),              // Read data 1
+            .rd2(rs2)               // Read data 2
+        );
 
         // Default values
         imm = 32'b0;

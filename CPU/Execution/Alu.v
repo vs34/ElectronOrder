@@ -1,8 +1,8 @@
 module Alu (
     input wire [4:0] rd,            // Destination register
     input wire [2:0] funct3,        // funct3 field
-    input wire [4:0] rs1,           // Source register 1
-    input wire [4:0] rs2,           // Source register 2
+    input wire [31:0] rs1,           // Source register 1
+    input wire [31:0] rs2,           // Source register 2
     input wire [6:0] funct7,        // funct7 field
     input wire [31:0] imm           // Immediate value
 );
