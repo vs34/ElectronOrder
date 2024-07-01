@@ -50,9 +50,9 @@ Instruction Set Architecture (ISA).
 6. **Pipeline Stages**
    - **Fetch**: Retrieves the instruction from memory.
    - **Decode**: Decodes the instruction and reads registers.
-   - **Memory Access**: Reads/Writes data from/to memory.
+     - **Memory Access**: Reads data from memory. (inside Dcoder)
    - **Execute**: Executes the instruction (ALU operations, branches).
-   - **Write Back**: Writes the result back to the register file.
+     - **Write Back**: Writes the result back to the register file. (no module direct in pipeline)
 
 ### 2. Integration of Various Components
 
