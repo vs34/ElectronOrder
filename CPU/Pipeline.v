@@ -27,13 +27,25 @@ module PipelineCPU (
     wire [31:0] branch_target;
 
     // IF stage
-    Fetcher if_stage (
+    Fetcher fetcher (
         .clk(clk),
         .reset(reset),
-        .pc_tar(branch_target),
-        .pc_tk(branch_taken),
-        .pc_out(pc),
-        .instruction(instruction)
+        .branch_target(branch_target),
+        .branch_taken(branch_taken),
+        .pc(pc),
+        .instruction(instruction),
+        .address(address),
+        .read(read)
+    );
+
+    RAM ram (
+        .clk(clk),
+        .reset(reset),
+        .address(address),
+        .data_in(data_in),  // Unused in Fetcher, can be left unconnected or set to 0
+        .data_out(instruction),
+        .read(read),
+        .write(1'b0)        // No write in Fetcher stage, so set to 0
     );
 
     // IF/ID pipeline register

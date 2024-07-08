@@ -1,21 +1,13 @@
-// 129
 module Fetcher (
-    input wire clk,                 // Clock signal
-    input wire reset,               // Reset signal
+    input wire clk,                // Clock signal
+    input wire reset,              // Reset signal
     input wire [31:0] branch_target, // Branch target address if next instruction is to branch
-    input wire branch_taken,         // Branch taken signal
-    output reg [31:0] pc,            // Program Counter
-    output reg [31:0] instruction    // Current instruction
+    input wire branch_taken,       // Branch taken signal
+    output reg [31:0] pc,          // Program Counter
+    output wire [31:0] instruction, // Current instruction
+    output reg [31:0] address,     // Address to access RAM
+    output reg read                // Read signal to access RAM
 );
-    // Instruction memory: 256 words of 32-bit instructions
-    reg [31:0] instruction_memory [0:255];
-
-    initial begin
-        // Initialize instruction memory with some values for simulation
-        // loaded from an external file or memory
-        $readmemh("instructions.hex", instruction_memory);
-    end
-
     // Program Counter Logic
     always @(posedge clk or posedge reset) begin
         if (reset) begin
@@ -27,9 +19,15 @@ module Fetcher (
         end
     end
 
-    // Fetch Instruction
-    always @(posedge clk) begin
-        instruction <= instruction_memory[pc[9:2]]; // Fetch instruction
+    // Address and read logic
+    always @(posedge clk or posedge reset) begin
+        if (reset) begin
+            address <= 32'b0; // Initialize address to zero on reset
+            read <= 1'b0;     // Initialize read signal to low on reset
+        end else begin
+            address <= pc;    // Set address to current PC value
+            read <= 1'b1;     // Set read signal high to read from RAM
+        end
     end
 endmodule
 
