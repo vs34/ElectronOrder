@@ -3,7 +3,7 @@ module Branch (
     input wire [31:0] imm,         // Immediate value (offset for branch)
     input wire [31:0] rs1,         // Source register 1
     input wire [31:0] rs2,         // Source register 2
-    input wire [2:0] funct3,k       // Branch type (funct3 field)
+    input wire [2:0] funct3,       // Branch type (funct3 field)
     output reg branch_taken,  // Branch taken signal
     output reg [31:0] branch_target // Branch target address
 );

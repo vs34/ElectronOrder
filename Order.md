@@ -34,7 +34,13 @@ Instruction Set Architecture (ISA).
 3. **Register File**
 
    - Set of registers for quick data storage and retrieval.
-   - Typically consists of 32 registers for RV32I.
+   - Typically consists of 32 registers for ~~RV32I~~ RV30I.
+     **CHANGE IN PLAN Repurposeing Some Register - 2 reg**
+   - 4bit for input
+   - 8bit for sound
+   - 52 bit for display (4 == 52/13) the cpu could change at most 4 pixel per cycle of clock
+     - 10 bit address of pixel to change color (2^10 = 1080 pixel 32 X 32)
+     - 3 bit color to change display (2^3 = 8 shade)
 
 4. **Execution Units**
 

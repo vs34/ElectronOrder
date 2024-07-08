@@ -10,8 +10,8 @@ module Decoder (
     output reg is_branch,           // Branch flag
     output reg is_load,             // Load flag
     output reg is_store,            // Store flag
-    output reg is_alu_op,           // ALU operation flag
-    output reg type                 // is the given instruction is R or I for alu
+    output reg is_alu_op            // ALU operation flag
+    // output reg type                 // is the given instruction is R or I for alu
 );
 
     always @(*) begin
@@ -22,16 +22,16 @@ module Decoder (
         rs1_add = instruction[19:15];
         rs2_add = instruction[24:20];
         funct7  = instruction[31:25];
-        type    = instruction[7];
+        // type    = instruction[7];
 
         Registers GetVelue_rs (    
-            .clk(1'b0),             // Clock signal
-            .reset(1'b0),           // Reset signal
-            .we(1'b0),              // Write enable
-            .ra1(rs1_add),          // Read address 1
-            .ra2(rs2_add),          // Read address 2
-            .wa,                    // Write address
-            .wd,                    // Write data
+            // .clk(1'b0),             // Clock signal
+            // .reset(1'b0),           // Reset signal
+            // .we(1'b0),              // Write enable
+            // .ra1(rs1_add),          // Read address 1
+            // .ra2(rs2_add),          // Read address 2
+            // .wa,                    // Write address
+            // .wd,                    // Write data
             .rd1(rs1),              // Read data 1
             .rd2(rs2)               // Read data 2
         );
